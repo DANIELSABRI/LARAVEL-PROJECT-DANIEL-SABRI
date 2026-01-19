@@ -1,0 +1,67 @@
+
+  Dropping all tables  17.23ms DONE
+
+   INFO  Preparing database.  
+
+  Creating migration table  6.21ms DONE
+
+   INFO  Running migrations.  
+
+  0001_01_01_000000_create_users_table  11.02ms DONE
+  0001_01_01_000001_create_cache_table  2.98ms DONE
+  0001_01_01_000002_create_jobs_table  8.06ms DONE
+  2026_01_01_000003_create_companies_table  4.23ms DONE
+  2026_01_01_000004_create_categories_table  3.46ms DONE
+  2026_01_01_000005_create_jobs_table  3.41ms DONE
+  2026_01_01_000006_create_skills_table  4.87ms DONE
+  2026_01_01_000007_create_applications_table  3.79ms DONE
+  2026_01_01_000008_create_saved_jobs_table  3.19ms DONE
+  2026_01_15_120000_add_profile_fields_to_users_table  8.11ms DONE
+  2026_01_15_125939_create_notifications_table  3.03ms DONE
+  2026_01_15_130000_add_status_to_jobs_table  1.95ms DONE
+  2026_01_15_140000_add_ban_status_to_users_table  3.38ms DONE
+  2026_01_15_150000_add_status_to_companies_table  2.02ms DONE
+  2026_01_15_160000_update_jobs_and_applications_table  2.01ms DONE
+  2026_01_15_163000_fix_jobs_enum  10.66ms DONE
+  2026_01_16_083934_clarify_admin_moderation_fields  4.47ms DONE
+  2026_01_16_083935_add_moderation_to_companies  4.70ms DONE
+  2026_01_16_083936_create_job_types_table  3.43ms DONE
+
+
+   INFO  Seeding database.  
+
+  Database\Seeders\UserSeeder  RUNNING  
+  Database\Seeders\UserSeeder  4,737 ms DONE  
+
+  Database\Seeders\CategorySeeder  RUNNING  
+  Database\Seeders\CategorySeeder  19 ms DONE  
+
+  Database\Seeders\JobTypeSeeder  RUNNING  
+  Database\Seeders\JobTypeSeeder  10 ms DONE  
+
+  Database\Seeders\JobSeeder  RUNNING  
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[23000]: Integrity constraint violation: 19 CHECK constraint failed: type (Connection: sqlite, SQL: insert into "jobs" ("company_id", "category_id", "job_type_id", "title", "slug", "description", "type", "location", "is_remote", "salary_min", "salary_max", "is_featured", "is_active", "status", "rejection_reason", "updated_at", "created_at") values (1, 3, 2, Design Part-time 2, design-part-time-2-6969fb7f88e5e, Extensive description for pending Design position., part-time, Remote, 1, 36480, 85390, 1, 0, pending, ?, 2026-01-16 08:49:03, 2026-01-16 08:49:03))
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:826
+    822▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    823▕                 );
+    824▕             }
+    825▕ 
+  ➜ 826▕             throw new QueryException(
+    827▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    828▕             );
+    829▕         }
+    830▕     }
+
+      [2m+18 vendor frames [22m
+
+  19  database/seeders/JobSeeder.php:48
+      Illuminate\Database\Eloquent\Model::__callStatic("create")
+      [2m+8 vendor frames [22m
+
+  28  database/seeders/DatabaseSeeder.php:20
+      Illuminate\Database\Seeder::call("Database\Seeders\JobSeeder")
+
